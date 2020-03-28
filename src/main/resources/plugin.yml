@@ -1,0 +1,5 @@
+name: Scoreboard
+main: me.guwooing.scoreboard.CustomScoreboard
+version: 0.0.2
+author: Guwooing
+description: A minecraft plugin that allows a scoreboard
