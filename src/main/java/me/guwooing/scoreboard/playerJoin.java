@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.*;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class playerJoin implements Listener {
 
@@ -26,36 +28,36 @@ public class playerJoin implements Listener {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         Scoreboard board = manager.getNewScoreboard();
         Objective objective = board.registerNewObjective("Server", "dummy");
-        objective.setDisplayName("Server");
+        objective.setDisplayName(Bukkit.getServer().getName());
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         Score user = objective.getScore("§a§lPLAYER");
         user.setScore(8);
 
-        Score onlineplayer = objective.getScore("§a » " + "§7Online§8: §f" + Bukkit.getOnlinePlayers().size());
+        Score onlineplayer = objective.getScore("§a » §7Online§8: §f" + Bukkit.getOnlinePlayers().size());
         onlineplayer.setScore(7);
 
 
         Score blue = objective.getScore("§b§lBLUE");
         blue.setScore(6);
 
-        Score blueinfo = objective.getScore("§b » " + "§7Money§8: §f" + "N/A");
+        Score blueinfo = objective.getScore("§b » §7Money§8: §fN/A");
         blueinfo.setScore(5);
 
 
         Score pink = objective.getScore("§d§lPINK");
         pink.setScore(4);
 
-        Score pinkinfo = objective.getScore("§d » " + "§7PinkText§8: §f" + "N/A");
+        Score pinkinfo = objective.getScore("§d » §7PinkText§8: §fN/A");
         pinkinfo.setScore(3);
 
         Score server = objective.getScore("§c§lSERVER");
         server.setScore(2);
 
-        Score ip = objective.getScore("§c » " + "§7Server IP§8: §f" + "N/A");
+        Score ip = objective.getScore("§c » §7Server IP§8: §fN/A");
         ip.setScore(1);
 
-        Score version = objective.getScore("§c » " + "§7Version§8: §f" + "0.0.2");
+        Score version = objective.getScore("§c » §7Version§8: §f0.0.3");
         version.setScore(0);
 
 
