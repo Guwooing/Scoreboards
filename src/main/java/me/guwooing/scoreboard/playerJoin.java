@@ -7,11 +7,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
-import java.util.TimerTask;
-import java.util.Timer;
 
-public class playerJoin implements Listener {
+public class playerJoin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
@@ -28,7 +27,7 @@ public class playerJoin implements Listener {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         Scoreboard board = manager.getNewScoreboard();
         Objective objective = board.registerNewObjective("Server", "dummy");
-        objective.setDisplayName(Bukkit.getServer().getName());
+        objective.setDisplayName(Utils.chat(getConfig.getString("server_name"));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         Score user = objective.getScore("§a§lPLAYER");
