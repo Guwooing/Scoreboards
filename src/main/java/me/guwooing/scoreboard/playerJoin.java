@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.*;
 
 public class PlayerJoin implements Listener {
@@ -18,6 +19,11 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         createScoreboard(e.getPlayer());
+        updateScoreboard();
+    }
+
+    @EventHandler
+    public void OnPlayerQuit() {
         updateScoreboard();
     }
 
@@ -63,7 +69,7 @@ public class PlayerJoin implements Listener {
 
     public void updateScoreboard() {
         for(Player online : Bukkit.getOnlinePlayers()) {
-            Score onlineplayer = online.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore("§a§l » " + "§7Online§8: §f" + Bukkit.getOnlinePlayers().size());
+            Score s7 = online.getScoreboard().getObjective(DisplaySlot.SIDEBAR).getScore(Utils.chat(plugin.getConfig().getString("line7").replace("<online>", String.valueOf(Bukkit.getOnlinePlayers().size()))));
         }
     }
 }
