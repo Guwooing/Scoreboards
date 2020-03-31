@@ -1,16 +1,19 @@
 package me.guwooing.scoreboard;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
 
-public class playerJoin extends JavaPlugin implements Listener {
+public class PlayerJoin implements Listener {
+
+    private CustomScoreboard plugin;
+
+    public PlayerJoin(CustomScoreboard plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
@@ -18,49 +21,44 @@ public class playerJoin extends JavaPlugin implements Listener {
         updateScoreboard();
     }
 
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent e) {
-        updateScoreboard();
-    }
-
-    public void createScoreboard(Player player) {
+    public void createScoreboard(Player p) {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         Scoreboard board = manager.getNewScoreboard();
         Objective objective = board.registerNewObjective("Server", "dummy");
-        objective.setDisplayName(Utils.chat(getConfig.getString("server_name"));
+        objective.setDisplayName(Utils.chat(plugin.getConfig().getString("server_name")));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-        Score user = objective.getScore("§a§lPLAYER");
+        Score user = objective.getScore(Utils.chat(plugin.getConfig().getString("line8")));
         user.setScore(8);
 
-        Score onlineplayer = objective.getScore("§a » §7Online§8: §f" + Bukkit.getOnlinePlayers().size());
+        Score onlineplayer = objective.getScore(Utils.chat(plugin.getConfig().getString("line7")));
         onlineplayer.setScore(7);
 
 
-        Score blue = objective.getScore("§b§lBLUE");
+        Score blue = objective.getScore(Utils.chat(plugin.getConfig().getString("line6")));
         blue.setScore(6);
 
-        Score blueinfo = objective.getScore("§b » §7Money§8: §fN/A");
+        Score blueinfo = objective.getScore(Utils.chat(plugin.getConfig().getString("line5")));
         blueinfo.setScore(5);
 
 
-        Score pink = objective.getScore("§d§lPINK");
+        Score pink = objective.getScore(Utils.chat(plugin.getConfig().getString("line4")));
         pink.setScore(4);
 
-        Score pinkinfo = objective.getScore("§d » §7PinkText§8: §fN/A");
+        Score pinkinfo = objective.getScore(Utils.chat(plugin.getConfig().getString("line3")));
         pinkinfo.setScore(3);
 
-        Score server = objective.getScore("§c§lSERVER");
+        Score server = objective.getScore(Utils.chat(plugin.getConfig().getString("line2")));
         server.setScore(2);
 
-        Score ip = objective.getScore("§c » §7Server IP§8: §fN/A");
+        Score ip = objective.getScore(Utils.chat(plugin.getConfig().getString("line1")));
         ip.setScore(1);
 
-        Score version = objective.getScore("§c » §7Version§8: §f0.0.3");
+        Score version = objective.getScore(Utils.chat(plugin.getConfig().getString("line0")));
         version.setScore(0);
 
 
-        player.setScoreboard(board);
+        p.setScoreboard(board);
     }
 
     public void updateScoreboard() {
