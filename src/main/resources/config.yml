@@ -1,13 +1,14 @@
+#<online> is if you want the player count to be displayed.
 #color codes must have '&' and NOT any other symbol.
 
-server_name: 'Test Minecraft server'
+server_name: 'Minecraft server'
 
 line8: '&a&lPLAYER'
-line7: '&a » &7Online&8: &fN/A'
+line7: '&a » &7Online&8: &f<online>'
 line6: '&b&lBLUE'
 line5: '&b » &7Money&8: &fN/A'
 line4: '&d&lPINK'
 line3: '&d » &7PinkText&8: &fN/A'
 line2: '&c&lSERVER'
 line1: '&c » &7Server IP&8: &fN/A'
-line0: '&c » &7Version&8: &f0.0.3'
+line0: '&c » &7Version&8: &f0.0.4'

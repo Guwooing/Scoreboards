@@ -28,34 +28,34 @@ public class PlayerJoin implements Listener {
         objective.setDisplayName(Utils.chat(plugin.getConfig().getString("server_name")));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-        Score user = objective.getScore(Utils.chat(plugin.getConfig().getString("line8")));
-        user.setScore(8);
+        Score s8 = objective.getScore(Utils.chat(plugin.getConfig().getString("line8")));
+        s8.setScore(8);
 
-        Score onlineplayer = objective.getScore(Utils.chat(plugin.getConfig().getString("line7")));
-        onlineplayer.setScore(7);
-
-
-        Score blue = objective.getScore(Utils.chat(plugin.getConfig().getString("line6")));
-        blue.setScore(6);
-
-        Score blueinfo = objective.getScore(Utils.chat(plugin.getConfig().getString("line5")));
-        blueinfo.setScore(5);
+        Score s7 = objective.getScore(Utils.chat(plugin.getConfig().getString("line7").replace("<online>", String.valueOf(Bukkit.getOnlinePlayers().size()))));
+        s7.setScore(7);
 
 
-        Score pink = objective.getScore(Utils.chat(plugin.getConfig().getString("line4")));
-        pink.setScore(4);
+        Score s6 = objective.getScore(Utils.chat(plugin.getConfig().getString("line6")));
+        s6.setScore(6);
 
-        Score pinkinfo = objective.getScore(Utils.chat(plugin.getConfig().getString("line3")));
-        pinkinfo.setScore(3);
+        Score s5 = objective.getScore(Utils.chat(plugin.getConfig().getString("line5")));
+        s5.setScore(5);
 
-        Score server = objective.getScore(Utils.chat(plugin.getConfig().getString("line2")));
-        server.setScore(2);
 
-        Score ip = objective.getScore(Utils.chat(plugin.getConfig().getString("line1")));
-        ip.setScore(1);
+        Score s4 = objective.getScore(Utils.chat(plugin.getConfig().getString("line4")));
+        s4.setScore(4);
 
-        Score version = objective.getScore(Utils.chat(plugin.getConfig().getString("line0")));
-        version.setScore(0);
+        Score s3 = objective.getScore(Utils.chat(plugin.getConfig().getString("line3")));
+        s3.setScore(3);
+
+        Score s2 = objective.getScore(Utils.chat(plugin.getConfig().getString("line2")));
+        s2.setScore(2);
+
+        Score s1 = objective.getScore(Utils.chat(plugin.getConfig().getString("line1")));
+        s1.setScore(1);
+
+        Score s0 = objective.getScore(Utils.chat(plugin.getConfig().getString("line0")));
+        s0.setScore(0);
 
 
         p.setScoreboard(board);
